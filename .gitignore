@@ -1,0 +1,11 @@
+.DS_Store
+.env
+.env.*
+!.env.example
+node_modules/
+.build/
+DerivedData/
+film/out/
+qa/apple-*.txt
+*.xcuserstate
+xcuserdata/
