@@ -156,6 +156,24 @@
         "focus": "Chest",
         "durationMinutes": 45
       }
+    ],
+    "activeWeekCount": 3,
+    "sessionExerciseCounts": [
+      4,
+      5,
+      4
     ]
+  },
+  "financePeriod": {
+    "recordedTotalMinor": 48640,
+    "groceriesMinor": 26266,
+    "otherMinor": 22374,
+    "currency": "EUR",
+    "note": "Separate overview fixture; includes 7400 energy-drink spend. Rounded category display 54/46."
+  },
+  "contextInference": {
+    "predicate": "eveningWorkoutPreference",
+    "sourceWorkoutCount": 6,
+    "confirmed": false
   }
 }

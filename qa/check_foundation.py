@@ -8,7 +8,8 @@ required = ['README.md', 'docs/product.md', 'docs/architecture.md', 'docs/design
             'docs/privacy.md', 'docs/ai-state-model.md', 'docs/video.md']
 for name in required:
     assert (root / name).is_file(), name
-for source in root.rglob('*.md'):
+sources = list(root.glob('*.md')) + [p for folder in ['docs', 'design', 'film', 'qa'] for p in (root / folder).glob('*.md')]
+for source in sources:
     if '.git' in source.parts:
         continue
     for target in re.findall(r'\]\(([^)]+)\)', source.read_text()):
@@ -40,4 +41,4 @@ for mode, i in [('light', 0), ('dark', 1)]:
         assert ratio >= 4.5, (mode, text, ratio)
         print(f'{mode}: {text}/canvas {ratio:.2f}:1')
 print('PASS: required docs, local links, synthetic arithmetic and proposed text contrast')
-print('Not tested: Figma visual rendering, prototype interactions, runtime app or video')
+print('Runtime app not tested; separate design and video checks are documented in qa/local-production.md')

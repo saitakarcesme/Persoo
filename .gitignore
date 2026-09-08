@@ -9,3 +9,5 @@ film/out/
 qa/apple-*.txt
 *.xcuserstate
 xcuserdata/
+film/motion/public/*-raw.wav
+.remotion/

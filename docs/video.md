@@ -1,3 +1,11 @@
+# Local delivery update
+
+The user authorized local design tools in place of completing Figma. Both concept films now use the shared SwiftUI design exports. See [storyboard](../film/storyboard.md), [production instructions](../film/README.md), [finished exports](../README.md#watch), and [QA](../qa/local-production.md).
+
+The 54-second launch export is 1080p/60fps. The 24-second portrait concept is 886×1920/30fps, H.264 High Level 4.0, approximately 11Mbps, stereo AAC. These are synthetic design demonstrations. The portrait film needs actual app capture before App Store submission. The research below informed the production; earlier future-tense plans are superseded by the linked delivery report.
+
+---
+
 # Persoo film production brief
 
 Status: research and pre-production constraints only. Final storyboard and production follow approved visual QA of the real Figma design. No film has been rendered yet.
