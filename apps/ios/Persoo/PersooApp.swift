@@ -10,7 +10,7 @@ import PersooCore
                 if store.onboarded { MainView() }
                 else { OnboardingView() }
             }.environmentObject(store).environmentObject(connection).preferredColorScheme(.dark)
-                .tint(.mint)
+                .tint(.white)
                 .task { connection.discover(); await store.reload() }
                 .alert("Persoo", isPresented: Binding(get: { store.error != nil }, set: { if !$0 { store.error = nil } })) {
                     Button("Tamam") { store.error = nil }
@@ -20,10 +20,10 @@ import PersooCore
 }
 struct BrandMark: View {
     var body: some View {
-        ZStack {
-            Circle().fill(.mint.opacity(0.10)).frame(width: 104, height: 104)
-            Image(systemName: "circle.hexagongrid.fill").font(.system(size: 46, weight: .light)).foregroundStyle(.mint)
-        }.accessibilityHidden(true)
+        Image(systemName: "waveform")
+            .font(.system(size: 48, weight: .light))
+            .foregroundStyle(LinearGradient(colors: [.white, Color(white: 0.45)], startPoint: .topLeading, endPoint: .bottomTrailing))
+            .frame(width: 88, height: 88).accessibilityHidden(true)
     }
 }
 struct PrimaryButton: View {
@@ -33,8 +33,8 @@ struct PrimaryButton: View {
     var body: some View {
         Button(action: action) {
             HStack { Text(title).fontWeight(.semibold); Spacer(); Image(systemName: "arrow.right") }
-                .padding(.horizontal, 24).frame(minHeight: 58).foregroundStyle(disabled ? Color.gray : Color.black)
-        }.buttonStyle(.plain).background(disabled ? Color.white.opacity(0.1) : Color.mint, in: Capsule()).disabled(disabled)
+                .padding(.horizontal, 18).frame(minHeight: 52).frame(maxWidth: .infinity)
+        }.buttonStyle(.glassProminent).tint(.white).disabled(disabled)
     }
 }
 struct OnboardingView: View {
@@ -50,7 +50,7 @@ struct OnboardingView: View {
                         Spacer()
                         Text("\(step + 1) / 4").font(.caption.monospacedDigit()).foregroundStyle(.secondary)
                     }.padding(.top, 12)
-                    HStack(spacing: 6) { ForEach(0..<4) { index in Capsule().fill(index <= step ? Color.mint : Color.white.opacity(0.1)).frame(height: 3) } }
+                    HStack(spacing: 6) { ForEach(0..<4) { index in Capsule().fill(index <= step ? Color.white : Color.white.opacity(0.1)).frame(height: 3) } }
                     Group {
                         switch step {
                         case 0: connectionStep
@@ -60,7 +60,7 @@ struct OnboardingView: View {
                         }
                     }
                 }.padding(26)
-            }.background(Color.black)
+            }.background(PersooBackdrop())
                 .safeAreaInset(edge: .bottom) {
                     VStack(spacing: 12) {
                         PrimaryButton(title: step == 3 ? "Persoo’yu aç" : "Devam et", disabled: cannotContinue) {
@@ -172,7 +172,7 @@ struct ConnectionPanel: View {
                     Task { do { try await connection.refreshModels() } catch { connection.status = error.localizedDescription } }
                 }.font(.subheadline)
             }
-        }.padding(20).background(.white.opacity(0.055), in: RoundedRectangle(cornerRadius: 26))
+        }.contentSurface()
             .onChange(of: connection.models.map(\.id)) { _, ids in if ids.count == 1, let first = ids.first { store.model = first } }
     }
 }

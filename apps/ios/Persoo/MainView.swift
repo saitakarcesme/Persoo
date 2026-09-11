@@ -217,14 +217,14 @@ struct ReceiptView: View {
                         Text(proposal.title).fontWeight(.medium)
                         if !proposal.detail.isEmpty { Text(proposal.detail).font(.subheadline).foregroundStyle(.secondary) }
                         if let minor = proposal.amountMinor, let currency = proposal.currency {
-                            Text(Double(minor) / 100, format: .currency(code: currency)).foregroundStyle(proposal.area.tint)
+                            Text(Double(minor) / 100, format: .currency(code: currency)).font(.title2.weight(.semibold)).monospacedDigit().foregroundStyle(proposal.area.tint)
                         }
                     }
                 }
             }
             HStack {
                 if event.status == .review {
-                    Button("Kayıtları onayla") { Task { await store.accept(event) } }.buttonStyle(.borderedProminent).tint(.mint)
+                    Button("Kayıtları onayla") { Task { await store.accept(event) } }.buttonStyle(.glassProminent).tint(.white)
                 }
                 if event.status == .pending {
                     Button(store.processing ? "İşleniyor…" : "Modelle işle") { Task { await store.process(event, connection: connection) } }.disabled(store.processing || !connection.online)
@@ -232,7 +232,7 @@ struct ReceiptView: View {
                 Spacer()
                 Button(event.status == .applied ? "Geri al" : "Vazgeç") { Task { await store.undo(event) } }.foregroundStyle(.secondary)
             }.font(.subheadline)
-        }.padding(22).background(.white.opacity(0.055), in: RoundedRectangle(cornerRadius: 26))
+        }.contentSurface(accent: event.proposals.first?.area.tint ?? .white)
     }
     private var status: String {
         switch event.status {
@@ -241,71 +241,6 @@ struct ReceiptView: View {
         case .applied: event.answer != nil ? "Kayıtlarından yanıt" : "\(event.proposals.count) kayıt eklendi"
         case .undone: "Geri alındı"
         }
-    }
-}
-struct LifeView: View {
-    @EnvironmentObject private var store: AppStore
-    var body: some View {
-        ScrollView {
-            VStack(alignment: .leading, spacing: 24) {
-                Text("Hayatına\nküçük bir bakış.").font(.system(size: 34, weight: .semibold)).tracking(-1)
-                Text("Seçtiğin alanlar, anlattıklarınla şekillenir.").foregroundStyle(.secondary)
-                LazyVGrid(columns: [GridItem(.adaptive(minimum: 145), spacing: 14)], spacing: 14) {
-                    ForEach(LifeArea.allCases.filter { store.areas.contains($0) }) { area in
-                        NavigationLink { AreaDetail(area: area) } label: {
-                            VStack(alignment: .leading, spacing: 20) {
-                                Image(systemName: area.symbol).font(.title2)
-                                Spacer(minLength: 8)
-                                Text(area.title).font(.headline)
-                                Text("\(store.records.filter { $0.area == area }.count) kayıt").font(.subheadline).opacity(0.7)
-                            }.frame(maxWidth: .infinity, minHeight: 140, alignment: .leading).padding(20).foregroundStyle(area.tint)
-                                .background(area.tint.opacity(0.13), in: RoundedRectangle(cornerRadius: 28))
-                        }.buttonStyle(.plain)
-                    }
-                }
-            }.padding(24)
-        }.background(Color.black).navigationTitle("Hayatım").navigationBarTitleDisplayMode(.inline)
-    }
-}
-struct AreaDetail: View {
-    let area: LifeArea
-    @EnvironmentObject private var store: AppStore
-    private var records: [RecordProposal] { store.records.filter { $0.area == area } }
-    private var week: [(date: Date, count: Int)] {
-        let calendar = Calendar.current
-        return (0..<7).reversed().compactMap { offset in
-            guard let date = calendar.date(byAdding: .day, value: -offset, to: Date()) else { return nil }
-            let count = store.events.filter { $0.status == .applied && calendar.isDate($0.createdAt, inSameDayAs: date) }.flatMap(\.proposals).filter { $0.area == area }.count
-            return (date, count)
-        }
-    }
-    var body: some View {
-        ScrollView {
-            VStack(alignment: .leading, spacing: 24) {
-                Image(systemName: area.symbol).font(.system(size: 38)).foregroundStyle(area.tint).padding(.top, 20)
-                Text(area.title).font(.largeTitle.bold())
-                if records.isEmpty {
-                    Text("İlk kaydınla başlar.").font(.title2)
-                    Text("Ana sayfada bu alanla ilgili bir şey anlat. Onayladığın kayıtlar burada görünecek.").foregroundStyle(.secondary).lineSpacing(5)
-                    if !store.areas.contains(area) { Button("Bu alanı etkinleştir") { store.areas.insert(area) }.buttonStyle(.borderedProminent) }
-                } else {
-                    VStack(alignment: .leading, spacing: 16) {
-                        Text("Son 7 gün · eklenen kayıtlar").font(.subheadline).foregroundStyle(.secondary)
-                        Chart(week, id: \.date) { point in
-                            BarMark(x: .value("Gün", point.date, unit: .day), y: .value("Kayıt", point.count)).foregroundStyle(area.tint).cornerRadius(5)
-                        }.frame(height: 150)
-                        Text("Grafik kayıt oluşturma gününü gösterir.").font(.caption2).foregroundStyle(.secondary)
-                    }.padding(22).background(.white.opacity(0.05), in: RoundedRectangle(cornerRadius: 26))
-                    ForEach(records) { record in
-                        VStack(alignment: .leading, spacing: 8) {
-                            Text(record.title).font(.headline)
-                            Text(record.detail).foregroundStyle(.secondary)
-                            if let minor = record.amountMinor, let currency = record.currency { Text(Double(minor) / 100, format: .currency(code: currency)).foregroundStyle(area.tint) }
-                        }.frame(maxWidth: .infinity, alignment: .leading).padding(22).background(area.tint.opacity(0.08), in: RoundedRectangle(cornerRadius: 24))
-                    }
-                }
-            }.padding(24)
-        }.background(Color.black).navigationBarTitleDisplayMode(.inline)
     }
 }
 struct SettingsView: View {
