@@ -1,0 +1,486 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		000DC614F287941EBEC4F5FC /* PersooCore in Frameworks */ = {isa = PBXBuildFile; productRef = 0691EF44DF5057A82A4762B3 /* PersooCore */; };
+		113F7F3A4853827A2EB4AA44 /* SpeechCapture.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C5911665B6EE0CF1B2AB3A /* SpeechCapture.swift */; };
+		1979372F3E3265741FD0046E /* AppStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B60F017EAB9A03ED412A5DF /* AppStore.swift */; };
+		24FFF5D938C983BBF57FEEAD /* PersooApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C7725E2513C5B42B06421A /* PersooApp.swift */; };
+		4D4F778799BBD382768D8C53 /* RecordingAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7899EB17EFE790816E415444 /* RecordingAttributes.swift */; };
+		4F4FB56F0C8911775233D346 /* CaptureIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE62AB6DF82936CDD4968B8F /* CaptureIntent.swift */; };
+		56FE0B8CB3FD8CB8046A8E79 /* RecordingAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7899EB17EFE790816E415444 /* RecordingAttributes.swift */; };
+		755D5D0732463F90CEBEF2FA /* PersooActivity.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = D69FCE6BDED33AD28AA6D67C /* PersooActivity.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		9B146D3676BF708B75B87750 /* PersooActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A7CB143C9BC0D11A8BBA79 /* PersooActivity.swift */; };
+		BF4C9CBADEC0CD5B88EC6F68 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CAEB95C9A80E6444EF0FB3A /* MainView.swift */; };
+		D8D1590CE386CBB2B75678B3 /* Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2BB0163A60FEED13CAC283A /* Connection.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		DE7BD471CF387F3725B06837 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4EF5A8396DB2C410A9366DBD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D5E8960A956E8BE0CFA90158;
+			remoteInfo = PersooActivity;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		FF6451FB566A9555BFAEBE0B /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				755D5D0732463F90CEBEF2FA /* PersooActivity.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		19A7CB143C9BC0D11A8BBA79 /* PersooActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersooActivity.swift; sourceTree = "<group>"; };
+		3B60F017EAB9A03ED412A5DF /* AppStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStore.swift; sourceTree = "<group>"; };
+		50017FB1A51B2AFD3110FBB2 /* Persoo.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = Persoo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		69C6D7605C8424BF2AF68261 /* PersooCore */ = {isa = PBXFileReference; lastKnownFileType = folder; name = PersooCore; path = ../../packages/PersooCore; sourceTree = SOURCE_ROOT; };
+		6CAEB95C9A80E6444EF0FB3A /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		7899EB17EFE790816E415444 /* RecordingAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingAttributes.swift; sourceTree = "<group>"; };
+		B2C5911665B6EE0CF1B2AB3A /* SpeechCapture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechCapture.swift; sourceTree = "<group>"; };
+		C2BB0163A60FEED13CAC283A /* Connection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Connection.swift; sourceTree = "<group>"; };
+		D69FCE6BDED33AD28AA6D67C /* PersooActivity.appex */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "wrapper.app-extension"; path = PersooActivity.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		E0C7725E2513C5B42B06421A /* PersooApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersooApp.swift; sourceTree = "<group>"; };
+		EE62AB6DF82936CDD4968B8F /* CaptureIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureIntent.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		9CD0789631861D68B8FEFF55 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				000DC614F287941EBEC4F5FC /* PersooCore in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		11B268EE83B175D0EC94EC0D /* Persoo */ = {
+			isa = PBXGroup;
+			children = (
+				3B60F017EAB9A03ED412A5DF /* AppStore.swift */,
+				EE62AB6DF82936CDD4968B8F /* CaptureIntent.swift */,
+				C2BB0163A60FEED13CAC283A /* Connection.swift */,
+				6CAEB95C9A80E6444EF0FB3A /* MainView.swift */,
+				E0C7725E2513C5B42B06421A /* PersooApp.swift */,
+				B2C5911665B6EE0CF1B2AB3A /* SpeechCapture.swift */,
+			);
+			path = Persoo;
+			sourceTree = "<group>";
+		};
+		4C0AC65368E724AC4E4DF368 = {
+			isa = PBXGroup;
+			children = (
+				95EE170280A784A8C98809FB /* Packages */,
+				11B268EE83B175D0EC94EC0D /* Persoo */,
+				89AFAC73B3E34B82408D2286 /* PersooActivity */,
+				E4A5961A0D525AAC6F170DFA /* Shared */,
+				4DBBCE788B7B7CB369E1CD64 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		4DBBCE788B7B7CB369E1CD64 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				50017FB1A51B2AFD3110FBB2 /* Persoo.app */,
+				D69FCE6BDED33AD28AA6D67C /* PersooActivity.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		89AFAC73B3E34B82408D2286 /* PersooActivity */ = {
+			isa = PBXGroup;
+			children = (
+				19A7CB143C9BC0D11A8BBA79 /* PersooActivity.swift */,
+			);
+			path = PersooActivity;
+			sourceTree = "<group>";
+		};
+		95EE170280A784A8C98809FB /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+				69C6D7605C8424BF2AF68261 /* PersooCore */,
+			);
+			name = Packages;
+			sourceTree = "<group>";
+		};
+		E4A5961A0D525AAC6F170DFA /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				7899EB17EFE790816E415444 /* RecordingAttributes.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		502A31BAC1A084EBDE2A2AFB /* Persoo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B9FEF3D4CDFDF9E6894E16C7 /* Build configuration list for PBXNativeTarget "Persoo" */;
+			buildPhases = (
+				94BA26CFA028C658FC9BC1F5 /* Sources */,
+				9CD0789631861D68B8FEFF55 /* Frameworks */,
+				FF6451FB566A9555BFAEBE0B /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B8B5AA5AC54AF1056DECBCE0 /* PBXTargetDependency */,
+			);
+			name = Persoo;
+			packageProductDependencies = (
+				0691EF44DF5057A82A4762B3 /* PersooCore */,
+			);
+			productName = Persoo;
+			productReference = 50017FB1A51B2AFD3110FBB2 /* Persoo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		D5E8960A956E8BE0CFA90158 /* PersooActivity */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FA6976F2E60C45C5AB35C4FC /* Build configuration list for PBXNativeTarget "PersooActivity" */;
+			buildPhases = (
+				2C5EFA55C3DA7BB6001C9654 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PersooActivity;
+			packageProductDependencies = (
+			);
+			productName = PersooActivity;
+			productReference = D69FCE6BDED33AD28AA6D67C /* PersooActivity.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		4EF5A8396DB2C410A9366DBD /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					502A31BAC1A084EBDE2A2AFB = {
+						DevelopmentTeam = "";
+						ProvisioningStyle = Automatic;
+					};
+					D5E8960A956E8BE0CFA90158 = {
+						DevelopmentTeam = "";
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 16F8EB1D6419A76EAB07612F /* Build configuration list for PBXProject "Persoo" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 4C0AC65368E724AC4E4DF368;
+			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				A79BDCF77A0D67AD0CEDD783 /* XCLocalSwiftPackageReference "../../packages/PersooCore" */,
+			);
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 4DBBCE788B7B7CB369E1CD64 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				502A31BAC1A084EBDE2A2AFB /* Persoo */,
+				D5E8960A956E8BE0CFA90158 /* PersooActivity */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2C5EFA55C3DA7BB6001C9654 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9B146D3676BF708B75B87750 /* PersooActivity.swift in Sources */,
+				4D4F778799BBD382768D8C53 /* RecordingAttributes.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		94BA26CFA028C658FC9BC1F5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1979372F3E3265741FD0046E /* AppStore.swift in Sources */,
+				4F4FB56F0C8911775233D346 /* CaptureIntent.swift in Sources */,
+				D8D1590CE386CBB2B75678B3 /* Connection.swift in Sources */,
+				BF4C9CBADEC0CD5B88EC6F68 /* MainView.swift in Sources */,
+				24FFF5D938C983BBF57FEEAD /* PersooApp.swift in Sources */,
+				56FE0B8CB3FD8CB8046A8E79 /* RecordingAttributes.swift in Sources */,
+				113F7F3A4853827A2EB4AA44 /* SpeechCapture.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B8B5AA5AC54AF1056DECBCE0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D5E8960A956E8BE0CFA90158 /* PersooActivity */;
+			targetProxy = DE7BD471CF387F3725B06837 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		03ED516A2A26713A775A4ECF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = "";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		0436DCC9C5AE80FBEE18D577 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		6B6DDFDB9E3AFEC150BDE318 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = app.persoo.ios;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		7211B39CF850FFBAE58DC3E0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = app.persoo.ios;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		88B8094322B345EE51EFB966 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = "Activity-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = app.persoo.ios.activity;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		FE4C74D497E6127C253C9A2A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = "Activity-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = app.persoo.ios.activity;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		16F8EB1D6419A76EAB07612F /* Build configuration list for PBXProject "Persoo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0436DCC9C5AE80FBEE18D577 /* Debug */,
+				03ED516A2A26713A775A4ECF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		B9FEF3D4CDFDF9E6894E16C7 /* Build configuration list for PBXNativeTarget "Persoo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6B6DDFDB9E3AFEC150BDE318 /* Debug */,
+				7211B39CF850FFBAE58DC3E0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		FA6976F2E60C45C5AB35C4FC /* Build configuration list for PBXNativeTarget "PersooActivity" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FE4C74D497E6127C253C9A2A /* Debug */,
+				88B8094322B345EE51EFB966 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		A79BDCF77A0D67AD0CEDD783 /* XCLocalSwiftPackageReference "../../packages/PersooCore" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = ../../packages/PersooCore;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		0691EF44DF5057A82A4762B3 /* PersooCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = PersooCore;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 4EF5A8396DB2C410A9366DBD /* Project object */;
+}
