@@ -126,6 +126,12 @@ public actor RecordStore {
     public func accept(id: UUID) throws {
         guard let index = events.firstIndex(where: { $0.id == id }) else { throw RecordError.unknownInput }
         guard events[index].status == .review else { throw RecordError.invalidTransition }
+        let evidence = MoneyEvidence.extract(from: events[index].text)
+        for record in events[index].proposals {
+            if let amount = record.amountMinor {
+                guard let currency = record.currency, evidence.contains(.init(amountMinor: amount, currency: currency)) else { throw RecordError.invalidResult }
+            }
+        }
         var next = events; next[index].status = .applied; try persist(next)
     }
     public func undo(id: UUID) throws {

@@ -57,7 +57,7 @@ def normalize_money(result, source):
     finance = [r for r in records if isinstance(r, dict) and r.get("area") == "finance"]
     if len(finance) != 1:
         return result
-    currency = r"(EUR|euros?|€|USD|dollars?|dolar|\$|GBP|pounds?|£|TRY|TL|lira|₺)(?![A-Za-z])"
+    currency = r"(EUR|euros?|€|USD|GBP|TRY|TL|lira|₺)(?![A-Za-z])"
     number = r"(?<![\d.,])(-?\d+(?:[.,]\d{1,2})?)(?![\d.,])"
     mentions = set()
     for pattern, amount_index, currency_index in [(number + r"\s*" + currency, 0, 1), (currency + r"\s*" + number, 1, 0)]:

@@ -5,7 +5,7 @@ public struct MoneyEvidence: Hashable, Sendable {
     public let amountMinor: Int
     public let currency: String
     public static func extract(from text: String) -> Set<MoneyEvidence> {
-        let currency = #"(EUR|euros?|€|USD|dollars?|dolar|\$|GBP|pounds?|£|TRY|TL|lira|₺)(?![A-Za-z])"#
+        let currency = #"(EUR|euros?|€|USD|GBP|TRY|TL|lira|₺)(?![A-Za-z])"#
         let number = #"(?<![\d.,])(-?\d+(?:[.,]\d{1,2})?)(?![\d.,])"#
         var found = Set<MoneyEvidence>()
         for (pattern, amountGroup, currencyGroup) in [(number + #"\s*"# + currency, 1, 2), (currency + #"\s*"# + number, 2, 1)] {

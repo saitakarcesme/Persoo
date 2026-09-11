@@ -63,3 +63,14 @@ private func location() -> URL { FileManager.default.temporaryDirectory.appendin
     #expect(MoneyEvidence.extract(from: "1.250,50 EUR").isEmpty)
     #expect(MoneyEvidence.extract(from: "25 repetitions").isEmpty)
 }
+@Test func legacyIncorrectMoneyCannotBeAccepted() async throws {
+    let url = location()
+    var old = InputEvent(text: "25 EUR")
+    old.status = .review
+    old.proposals = [.init(area: .finance, title: "Old proposal", detail: "", amountMinor: 25, currency: "EUR")]
+    try FileManager.default.createDirectory(at: url.deletingLastPathComponent(), withIntermediateDirectories: true)
+    try JSONEncoder().encode([old]).write(to: url)
+    let store = try RecordStore(url: url)
+    await #expect(throws: RecordError.self) { try await store.accept(id: old.id) }
+    #expect(MoneyEvidence.extract(from: "$25").isEmpty)
+}
