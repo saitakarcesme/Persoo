@@ -106,13 +106,15 @@ public actor RecordStore {
         } else {
             guard !result.records.isEmpty, result.answer == nil else { throw RecordError.invalidResult }
         }
+        let explicitMoney = MoneyEvidence.extract(from: events[index].text)
         for record in result.records {
             guard enabled.contains(record.area), !record.title.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty,
                   record.title.count <= 200, record.detail.count <= 4000 else { throw RecordError.invalidResult }
             if record.amountMinor != nil || record.currency != nil {
                 guard record.area == .finance, let amount = record.amountMinor,
                       amount.magnitude <= 100_000_000_000, let currency = record.currency,
-                      currency.count == 3, currency.unicodeScalars.allSatisfy({ (65...90).contains($0.value) }) else { throw RecordError.invalidResult }
+                      currency.count == 3, currency.unicodeScalars.allSatisfy({ (65...90).contains($0.value) }),
+                      explicitMoney.contains(.init(amountMinor: amount, currency: currency)) else { throw RecordError.invalidResult }
             }
         }
         guard Set(result.records.map(\.id)).count == result.records.count else { throw RecordError.invalidResult }

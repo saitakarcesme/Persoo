@@ -46,3 +46,20 @@ private func location() -> URL { FileManager.default.temporaryDirectory.appendin
     #expect(throws: (any Error).self) { try RecordStore(url: url) }
     #expect(try String(contentsOf: url, encoding: .utf8) == "broken")
 }
+
+@Test func moneyMustMatchExplicitSource() async throws {
+    let store = try RecordStore(url: location())
+    let event = try await store.append(text: "I spent 25 EUR on groceries.")
+    let wrong = RecordProposal(area: .finance, title: "Groceries", detail: "25 EUR", amountMinor: 25, currency: "EUR")
+    await #expect(throws: RecordError.self) { try await store.propose(id: event.id, result: .init(kind: "record", records: [wrong]), enabled: [.finance]) }
+    #expect(await store.all().first?.status == .pending)
+    var correct = wrong; correct.amountMinor = 2500
+    try await store.propose(id: event.id, result: .init(kind: "record", records: [correct]), enabled: [.finance])
+    #expect(await store.all().first?.status == .review)
+}
+@Test func decimalMoneyAndAmbiguity() {
+    #expect(MoneyEvidence.extract(from: "12,50 euro").first?.amountMinor == 1250)
+    #expect(MoneyEvidence.extract(from: "EUR 25").first?.amountMinor == 2500)
+    #expect(MoneyEvidence.extract(from: "1.250,50 EUR").isEmpty)
+    #expect(MoneyEvidence.extract(from: "25 repetitions").isEmpty)
+}

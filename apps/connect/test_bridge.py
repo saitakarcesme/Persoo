@@ -86,3 +86,13 @@ class BridgeTests(unittest.TestCase):
         finally: self.state.inference.release()
 
 if __name__ == '__main__': unittest.main()
+
+class MoneyTests(unittest.TestCase):
+    def test_single_explicit_amount_overrides_model_unit_error(self):
+        result = {'records': [{'area': 'finance', 'amountMinor': 25, 'currency': 'EUR'}]}
+        actual = bridge.normalize_money(result, 'I spent 25 EUR on groceries.')
+        self.assertEqual(actual['records'][0]['amountMinor'], 2500)
+    def test_multiple_amounts_are_not_guessed(self):
+        result = {'records': [{'area': 'finance', 'amountMinor': None, 'currency': None}]}
+        actual = bridge.normalize_money(result, '25 EUR groceries and 10 EUR coffee')
+        self.assertIsNone(actual['records'][0]['amountMinor'])

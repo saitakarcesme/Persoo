@@ -5,6 +5,8 @@ import hashlib
 import hmac
 import json
 import os
+import re
+from decimal import Decimal
 from pathlib import Path
 import secrets
 import ssl
@@ -48,6 +50,27 @@ def models():
 def pairing_code(fingerprint, nonce):
     digest = hashlib.sha256((fingerprint + nonce).encode()).digest()
     return f"{int.from_bytes(digest[:4], 'big') % 1_000_000:06d}"
+
+def normalize_money(result, source):
+    """One explicit amount + one finance record: calculate minor units, never infer them."""
+    records = result.get("records", [])
+    finance = [r for r in records if isinstance(r, dict) and r.get("area") == "finance"]
+    if len(finance) != 1:
+        return result
+    currency = r"(EUR|euros?|€|USD|dollars?|dolar|\$|GBP|pounds?|£|TRY|TL|lira|₺)(?![A-Za-z])"
+    number = r"(?<![\d.,])(-?\d+(?:[.,]\d{1,2})?)(?![\d.,])"
+    mentions = set()
+    for pattern, amount_index, currency_index in [(number + r"\s*" + currency, 0, 1), (currency + r"\s*" + number, 1, 0)]:
+        for match in re.findall(pattern, source, re.I):
+            amount = int(Decimal(match[amount_index].replace(",", ".")) * 100)
+            word = match[currency_index].lower()
+            code = "EUR" if word in ("eur", "euro", "euros", "€") else "USD" if word in ("usd", "dollar", "dollars", "dolar", "$") else "GBP" if word in ("gbp", "pound", "pounds", "£") else "TRY"
+            mentions.add((amount, code))
+    if len(mentions) == 1:
+        amount, code = mentions.pop()
+        finance[0]["amountMinor"] = amount
+        finance[0]["currency"] = code
+    return result
 
 class Bridge:
     def __init__(self, directory):
@@ -168,7 +191,7 @@ class Bridge:
         result = json.loads(raw)
         if not isinstance(result, dict) or result.get("kind") not in ("record", "answer") or not isinstance(result.get("records"), list):
             raise ValueError("Invalid model output")
-        return result
+        return normalize_money(result, text)
 
 class Server(ThreadingHTTPServer):
     daemon_threads = True
