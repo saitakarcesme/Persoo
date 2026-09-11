@@ -68,7 +68,7 @@ struct HomeView: View {
                 }.scrollDismissesKeyboard(.interactively)
             }
         }
-        .toolbar { ToolbarItem(placement: .topBarLeading) { Text("persoo").font(.system(size: 25, weight: .semibold, design: .rounded)).tracking(-1) } }
+        .toolbar { ToolbarItem(placement: .topBarLeading) { Text("persoo").font(.system(size: 25, weight: .semibold, design: .rounded)).tracking(-1).fixedSize() }.sharedBackgroundVisibility(.hidden) }
         .safeAreaInset(edge: .bottom, spacing: 0) { inputBar }
         .task { await store.reload(); capture.refreshAudio() }
         .alert("Ses kaydı", isPresented: Binding(get: { capture.error != nil }, set: { if !$0 { capture.error = nil } })) {
