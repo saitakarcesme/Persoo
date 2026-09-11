@@ -148,12 +148,21 @@ class Bridge:
             'When currency/amount is unknown leave BOTH null and describe ambiguity. '
             'Do not change existing records. Propose at most 20 records, only for these enabled areas: ' + ', '.join(selected)
         )
-        response = request_json(base + "/chat/completions", {
-            "model": available[model]["name"], "temperature": 0.1, "stream": False,
-            "messages": [{"role": "system", "content": instruction},
-                         {"role": "user", "content": json.dumps({"storedRecords": context, "input": text}, ensure_ascii=False)}],
-            "response_format": {"type": "json_object"}}, timeout=90)
-        raw = response["choices"][0]["message"]["content"].strip()
+        messages = [{"role": "system", "content": instruction},
+                    {"role": "user", "content": json.dumps({"storedRecords": context, "input": text}, ensure_ascii=False)}]
+        if provider == "Ollama":
+            response = request_json(base.removesuffix("/v1") + "/api/chat", {
+                "model": available[model]["name"], "stream": False, "think": False,
+                "format": "json", "keep_alive": "60s",
+                "options": {"temperature": 0.1, "num_predict": 1024},
+                "messages": messages}, timeout=90)
+            raw = response["message"]["content"].strip()
+        else:
+            response = request_json(base + "/chat/completions", {
+                "model": available[model]["name"], "temperature": 0.1, "stream": False,
+                "max_tokens": 1024, "messages": messages,
+                "response_format": {"type": "json_object"}}, timeout=90)
+            raw = response["choices"][0]["message"]["content"].strip()
         if raw.startswith("```"):
             raw = raw.removeprefix("```json").removeprefix("```").removesuffix("```").strip()
         result = json.loads(raw)

@@ -70,9 +70,9 @@ class BridgeTests(unittest.TestCase):
         model = {'id': 'Ollama:fixture', 'name': 'fixture', 'provider': 'Ollama'}
         body = {'text': 'Remember my book', 'model': model['id'], 'areas': ['notes'], 'context': []}
         answer = {'kind': 'record', 'records': [{'area': 'notes', 'title': 'Book', 'detail': 'Remember my book'}], 'answer': None}
-        with patch.object(bridge, 'models', return_value=[model]), patch.object(bridge, 'request_json', return_value={'choices': [{'message': {'content': json.dumps(answer)}}]}):
+        with patch.object(bridge, 'models', return_value=[model]), patch.object(bridge, 'request_json', return_value={'message': {'content': json.dumps(answer)}}):
             self.assertEqual(self.call('/process', body, token), (200, answer))
-        with patch.object(bridge, 'models', return_value=[model]), patch.object(bridge, 'request_json', return_value={'choices': [{'message': {'content': 'not json'}}]}):
+        with patch.object(bridge, 'models', return_value=[model]), patch.object(bridge, 'request_json', return_value={'message': {'content': 'not json'}}):
             self.assertEqual(self.call('/process', body, token)[0], 422)
     def test_unavailable_model_does_not_fallback(self):
         token = self.pair()

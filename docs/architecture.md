@@ -25,3 +25,8 @@ Tek iOS Simulator runtime/device, `-jobs 2`, Xcode GUI zorunlu değil. Build ver
 2. Connect: keşif, kullanıcı onayı, kimlik doğrulama, yerel model erişimi.
 3. iOS onboarding → klavye kaydı → kalıcılık → sonuç kartı.
 4. Mikrofon + Action Button + Live Activity: gerçek iPhone'da kilitli/arka plan senaryoları.
+
+## Yerel geliştirme konumu (2026-09-11)
+Aktif checkout `/Users/ibrahimsaitakarcesme/Developer/Persoo`. Documents altındaki eski yol bu konuma symlink'tir. iCloud kaynak dosyaları ve Git nesnelerini `dataless` yaptığı için taşındı. Önce tüm dosyalar indirildi, yeni checkout'a commit nesneleri aktarıldı ve bağlantı bütünlüğü doğrulandı. iCloud'daki kopya `Persoo-iCloud-backup-2026-09-11` olarak korundu. Geliştirmeyi tekrar Documents/iCloud'a taşımayın.
+
+Ollama kayıt çıkarımı: native `/api/chat`, `think: false`, en fazla 1024 çıktı tokenı, 60 saniye idle keep-alive. Aynı anda tek inference. Kaynak: https://docs.ollama.com/api/chat . Bu sınırlar yeni model indirmez veya başka uygulamanın ayarlarını değiştirmez.
