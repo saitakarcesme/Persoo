@@ -90,7 +90,7 @@ struct HomeView: View {
             }
             if typing {
                 HStack(alignment: .bottom) {
-                    TextField("Aklındakini yaz…", text: $draft, axis: .vertical).lineLimit(1...5).focused($focused).padding(.vertical, 12)
+                    TextField("Aklındakini yaz…", text: $draft, axis: .vertical).lineLimit(1...5).autocorrectionDisabled().focused($focused).padding(.vertical, 12)
                     Button { submit() } label: { Image(systemName: "arrow.up").fontWeight(.semibold).frame(width: 44, height: 44).background(.mint, in: Circle()).foregroundStyle(.black) }
                         .disabled(draft.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty).accessibilityLabel("Kaydet")
                 }.padding(12).glassEffect(.regular, in: RoundedRectangle(cornerRadius: 28))
