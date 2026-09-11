@@ -78,22 +78,27 @@ struct HomeView: View {
     @EnvironmentObject private var connection: Connection
     @StateObject private var capture = SpeechCapture.shared
     @ScaledMetric(relativeTo: .largeTitle) private var heroSize = 44.0
+    @Environment(\.dynamicTypeSize) private var typeSize
     private var latest: InputEvent? { store.events.first { $0.status != .undone } }
     var body: some View {
         GeometryReader { geometry in
             ScrollView {
                 VStack(spacing: 0) {
-                    Spacer(minLength: 28)
+                    Spacer(minLength: typeSize.isAccessibilitySize ? 8 : 28)
                     VStack(spacing: 16) {
                         Text(store.name.isEmpty ? "Sana ait bir alan" : "Merhaba, \(store.name)").font(.subheadline).foregroundStyle(.secondary)
-                        Text("Aklında\nne var?").font(.system(size: heroSize, weight: .semibold)).tracking(-1.7).multilineTextAlignment(.center).fixedSize(horizontal: false, vertical: true)
-                        Text("Bir düşünce. Bir plan. Bugünden bir an.")
-                            .font(.subheadline).foregroundStyle(.secondary).multilineTextAlignment(.center).padding(.horizontal, 20)
+                        Text(typeSize.isAccessibilitySize ? "Aklında ne var?" : "Aklında\nne var?")
+                            .font(typeSize.isAccessibilitySize ? .title2.weight(.semibold) : .system(size: heroSize, weight: .semibold))
+                            .tracking(-1).multilineTextAlignment(.center).fixedSize(horizontal: false, vertical: true)
+                        if !typeSize.isAccessibilitySize {
+                            Text("Bir düşünce. Bir plan. Bugünden bir an.")
+                                .font(.subheadline).foregroundStyle(.secondary).multilineTextAlignment(.center).padding(.horizontal, 20)
+                        }
                     }.padding(.vertical, 24)
-                    Spacer(minLength: 36)
+                    Spacer(minLength: typeSize.isAccessibilitySize ? 12 : 36)
                     VStack(alignment: .leading, spacing: 16) {
                         HStack {
-                            SectionEyebrow(text: latest == nil ? "SENİN ALANIN" : "SON ETKİNLİK")
+                            if !typeSize.isAccessibilitySize { SectionEyebrow(text: latest == nil ? "SENİN ALANIN" : "SON ETKİNLİK") }
                             Spacer()
                             HStack(spacing: 5) {
                                 Circle().fill(connection.online ? Color.green : Color.gray).frame(width: 5, height: 5)

@@ -4,6 +4,7 @@ import PersooCore
 
 struct LifeView: View {
     @EnvironmentObject private var store: AppStore
+    @Environment(\.dynamicTypeSize) private var typeSize
     private var areas: [LifeArea] { LifeArea.allCases.filter { store.areas.contains($0) } }
     var body: some View {
         ScrollView {
@@ -20,7 +21,7 @@ struct LifeView: View {
                     Label("\(areas.count) alan", systemImage: "square.grid.2x2")
                         .font(.caption).foregroundStyle(.secondary).padding(.bottom, 4)
                 }.padding(.top, 8)
-                LazyVGrid(columns: [GridItem(.adaptive(minimum: 150), spacing: 14)], spacing: 14) {
+                LazyVGrid(columns: [GridItem(.adaptive(minimum: typeSize.isAccessibilitySize ? 300 : 150), spacing: 14)], spacing: 14) {
                     ForEach(areas) { area in
                         NavigationLink { AreaDetail(area: area) } label: {
                             AreaTile(area: area, records: store.records.filter { $0.area == area })
