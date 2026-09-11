@@ -4,6 +4,8 @@
 
 Yerel model kullananlar için native iPhone kayıt asistanı. İlk çalışan geliştirme sürümü: SwiftUI + Liquid Glass, IP yazmadan bilgisayar eşleştirme, yerel kayıt kuyruğu ve modelden denetlenebilir kayıt önerileri.
 
+Güncel tasarım: [ana sayfa](docs/screenshots/redesign/after-home.png) · [Hayatım](docs/screenshots/redesign/after-life.png) · [Finans](docs/screenshots/redesign/after-finance.png).
+
 ## Çalışan temel
 
 - Kurulum: bilgisayarı/modeli bağla → isim → hoş geldin → birden fazla kullanım alanı.

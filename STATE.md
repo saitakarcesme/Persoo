@@ -1,6 +1,16 @@
 # Güncel durum — sonraki sohbet buradan devam eder
 
-Son güncelleme: 2026-09-11. İlk çalışan uçtan uca temel tamamlandı; ürünün tamamı değil.
+Son güncelleme: 2026-09-11. İlk çalışan temel üzerinde UI yeniden tasarlandı; ürünün tamamı değil.
+
+## Son tasarım turu
+Kullanıcı ilk UI'ı Apple kalitesinde bulmadı. `docs/ui-direction.md` yeni yönü ve gerekçeyi kaydeder; yeni görünüm kullanıcı tarafından henüz onaylanmadı.
+- Ana sayfa kalıcı anlatma alanı; son kayıt kısa özeti ve ayrı geçmiş sheet'i.
+- Mikrofon/klavye native `tabViewBottomAccessory` içinde; native sekmeler, toolbar ve glass/glassProminent düğmeler. Ayrı özel mikrofon kapsülü kaldırıldı.
+- Siyah taban ve hafif alan rengi ışığı; okunabilir veri yüzeyleri, yeni özet/kart/grafik hiyerarşisi.
+- Yazı düzenleyicisi ayrı sheet; kayıt, geçmişe erişim ve test önerisini geri alma doğrulandı.
+- iOS build geçti. Aynı €25 test kaydıyla ana sayfa, Hayatım, Finans ve kurulum görsel kontrolü; en büyük Dynamic Type'ta ana ekran/kart okunabilirliği kontrol edildi. Normal yazı boyutuna dönüldü.
+- Önce/sonra: `docs/screenshots/redesign/`. Gerçek ses kaydı ve fiziksel iPhone bu UI turunda denenmedi.
+
 
 ## Çalışma yeri ve yetki
 - Aktif checkout: `/Users/ibrahimsaitakarcesme/Developer/Persoo`.
