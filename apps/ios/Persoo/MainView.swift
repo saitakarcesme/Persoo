@@ -107,7 +107,15 @@ struct HomeView: View {
                         }
                         if let latest {
                             Button(action: showHistory) {
-                                HStack(spacing: 14) {
+                                if typeSize.isAccessibilitySize {
+                                    VStack(alignment: .leading, spacing: 10) {
+                                        Text(latest.status == .pending ? "İşlenmeyi bekliyor" : latest.status == .review ? "Kontrolünü bekliyor" : "Son kaydın")
+                                            .font(.caption).foregroundStyle(.secondary)
+                                        Text(latest.proposals.first?.title ?? latest.text)
+                                            .font(.body.weight(.medium)).foregroundStyle(.primary).lineLimit(2)
+                                    }.frame(maxWidth: .infinity, alignment: .leading).contentSurface()
+                                } else {
+                                    HStack(spacing: 14) {
                                     Image(systemName: latest.status == .pending ? "tray.and.arrow.down" : "checkmark")
                                         .font(.system(size: 17, weight: .medium)).foregroundStyle(.primary)
                                         .frame(width: 42, height: 42).background(.white.opacity(0.07), in: Circle())
@@ -119,6 +127,7 @@ struct HomeView: View {
                                     Spacer(minLength: 0)
                                     Image(systemName: "chevron.right").font(.caption.weight(.semibold)).foregroundStyle(.tertiary)
                                 }.contentSurface()
+                                }
                             }.buttonStyle(.plain)
                         } else {
                             HStack(spacing: 12) {
@@ -133,7 +142,7 @@ struct HomeView: View {
                         if !capture.savedAudio.isEmpty {
                             Button(action: showHistory) { Label("\(capture.savedAudio.count) ses kaydı yazıya çevrilmeyi bekliyor", systemImage: "waveform").font(.caption) }
                         }
-                        Text("Anlattıkların cihazlarında kalır.").font(.caption).foregroundStyle(.secondary).frame(maxWidth: .infinity)
+                        if !typeSize.isAccessibilitySize { Text("Anlattıkların cihazlarında kalır.").font(.caption).foregroundStyle(.secondary).frame(maxWidth: .infinity) }
                     }.padding(.bottom, 24)
                 }.padding(.horizontal, 24).frame(minHeight: geometry.size.height)
             }.background(PersooBackdrop())
