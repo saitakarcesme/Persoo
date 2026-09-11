@@ -1,0 +1,61 @@
+name: Persoo
+options:
+  bundleIdPrefix: app.persoo
+  deploymentTarget:
+    iOS: '26.0'
+packages:
+  PersooCore:
+    path: ../../packages/PersooCore
+settings:
+  base:
+    SWIFT_VERSION: '5.0'
+    TARGETED_DEVICE_FAMILY: '1'
+    DEVELOPMENT_TEAM: ''
+    CODE_SIGN_STYLE: Automatic
+targets:
+  Persoo:
+    type: application
+    platform: iOS
+    sources: [Persoo, Shared]
+    dependencies:
+      - package: PersooCore
+      - target: PersooActivity
+        embed: true
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: app.persoo.ios
+        GENERATE_INFOPLIST_FILE: NO
+        INFOPLIST_FILE: Info.plist
+    info:
+      path: Info.plist
+      properties:
+        CFBundleDisplayName: Persoo
+        UILaunchScreen: {}
+        NSLocalNetworkUsageDescription: Kendi bilgisayarındaki modeli bulmak ve eşleştirmek için.
+        NSBonjourServices: ['_persoo._tcp']
+        NSMicrophoneUsageDescription: Anlattıklarını kişisel kayıtlarına dönüştürmek için.
+        NSSpeechRecognitionUsageDescription: Sesini cihaz üzerinde yazıya çevirmek için.
+        NSSupportsLiveActivities: YES
+        UIBackgroundModes: [audio]
+        NSAppTransportSecurity:
+          NSAllowsLocalNetworking: YES
+  PersooActivity:
+    type: app-extension
+    platform: iOS
+    sources: [PersooActivity, Shared]
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: app.persoo.ios.activity
+        GENERATE_INFOPLIST_FILE: NO
+        INFOPLIST_FILE: Activity-Info.plist
+    info:
+      path: Activity-Info.plist
+      properties:
+        NSExtension:
+          NSExtensionPointIdentifier: com.apple.widgetkit-extension
+    dependencies: []
+schemes:
+  Persoo:
+    build:
+      targets:
+        Persoo: all
