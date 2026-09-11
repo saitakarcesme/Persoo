@@ -6,7 +6,7 @@ struct Pairing: Identifiable {
     let name: String
     let code: String
 }
-@MainActor final class Companion: NSObject, ObservableObject, NetServiceDelegate {
+@MainActor final class Companion: NSObject, ObservableObject, @preconcurrency NetServiceDelegate {
     @Published var status = "Bağlantı hazırlanıyor…"
     @Published var pairings: [Pairing] = []
     @Published var models: [String] = []
