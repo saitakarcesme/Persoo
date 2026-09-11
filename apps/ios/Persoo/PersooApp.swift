@@ -1,4 +1,5 @@
 import SwiftUI
+import PersooCore
 
 @main struct PersooApp: App {
     @StateObject private var store = AppStore.shared

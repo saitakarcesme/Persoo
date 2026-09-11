@@ -52,7 +52,7 @@ enum SecurePair {
     }
     static func clear() { SecItemDelete([kSecClass as String: kSecClassGenericPassword, kSecAttrService as String: service] as CFDictionary) }
 }
-@MainActor final class Connection: NSObject, ObservableObject, NetServiceBrowserDelegate, NetServiceDelegate {
+@MainActor final class Connection: NSObject, ObservableObject, @preconcurrency NetServiceBrowserDelegate, @preconcurrency NetServiceDelegate {
     @Published var computers: [NetService] = []
     @Published var status = "Bilgisayarında Persoo Connect’i aç."
     @Published var code: String?
