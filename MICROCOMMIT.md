@@ -11,3 +11,9 @@ Bu dosya tüm modeller ve sohbetler için geçerlidir.
 - Checkpoint yerel committir. Bu yeniden kurulumda kullanıcı GitHub reposunun boşaltılıp geliştirilmesini istedi; normal push yetkili. Force push ve geçmişi silmek bu kapsama girmez.
 - Devam ederken: AGENTS.md → MICROCOMMIT.md → STATE.md → docs/architecture.md oku; git status ve son 5 commiti kontrol et.
 - Çalışma süresi dışında kendiliğinden commit döngüsü veya zamanlanmış görev başlatma.
+
+## Yardımcı komut
+
+`./scripts/checkpoint.sh 'kisa aciklama' dosya1 dosya2`
+
+Önce diff'i incele, sonra komutu çalıştır. Betik yalnızca açıkça belirtilen dosyaları stage eder, önceden staged değişiklik varsa durur, bariz özel/üretilmiş dosya adlarını engeller ve boş commit oluşturmaz. Dosya adı kontrolü tam bir secret taraması değildir; içerik incelemesi yine gereklidir.
