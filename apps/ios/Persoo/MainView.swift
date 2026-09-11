@@ -93,7 +93,7 @@ struct HomeView: View {
                     Spacer(minLength: 36)
                     VStack(alignment: .leading, spacing: 16) {
                         HStack {
-                            SectionEyebrow(text: "SENİN ALANIN")
+                            SectionEyebrow(text: latest == nil ? "SENİN ALANIN" : "SON ETKİNLİK")
                             Spacer()
                             HStack(spacing: 5) {
                                 Circle().fill(connection.online ? Color.green : Color.gray).frame(width: 5, height: 5)
@@ -128,7 +128,7 @@ struct HomeView: View {
                         if !capture.savedAudio.isEmpty {
                             Button(action: showHistory) { Label("\(capture.savedAudio.count) ses kaydı yazıya çevrilmeyi bekliyor", systemImage: "waveform").font(.caption) }
                         }
-                        Text("Anlattıkların cihazlarında kalır.").font(.caption2).foregroundStyle(.tertiary).frame(maxWidth: .infinity)
+                        Text("Anlattıkların cihazlarında kalır.").font(.caption).foregroundStyle(.secondary).frame(maxWidth: .infinity)
                     }.padding(.bottom, 24)
                 }.padding(.horizontal, 24).frame(minHeight: geometry.size.height)
             }.background(PersooBackdrop())
