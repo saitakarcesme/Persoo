@@ -48,7 +48,7 @@ enum SecurePair {
         let result = SecItemUpdate(query as CFDictionary, attributes as CFDictionary)
         if result == errSecItemNotFound {
             guard SecItemAdd(query.merging(attributes) { _, new in new } as CFDictionary, nil) == errSecSuccess else { throw ConnectionError.message("Eşleştirme güvenli alana kaydedilemedi.") }
-        } else if result != errSecSuccess { throw ConnectionError.message("Eşleştirme kaydedilemedi.") }
+        } else if result != errSecSuccess { throw ConnectionError.message("Eşleştirme kaydedilemedi (Keychain: \(result)).") }
     }
     static func clear() { SecItemDelete([kSecClass as String: kSecClassGenericPassword, kSecAttrService as String: service] as CFDictionary) }
 }
