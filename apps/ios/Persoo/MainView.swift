@@ -205,7 +205,7 @@ struct ReceiptView: View {
         VStack(alignment: .leading, spacing: 16) {
             HStack {
                 Label(status, systemImage: event.status == .pending ? "tray.and.arrow.down" : "checkmark.circle")
-                    .font(.caption.weight(.medium)).foregroundStyle(event.status == .pending ? .secondary : Color.mint)
+                    .font(.caption.weight(.medium)).foregroundStyle(event.status == .pending ? Color.secondary : event.status == .review ? Color.orange : Color.green)
                 Spacer(); Text(event.createdAt, style: .time).font(.caption).foregroundStyle(.secondary)
             }
             Text(event.text).font(.body).textSelection(.enabled)
@@ -224,7 +224,7 @@ struct ReceiptView: View {
             }
             HStack {
                 if event.status == .review {
-                    Button("Kayıtları onayla") { Task { await store.accept(event) } }.buttonStyle(.glassProminent).tint(.white)
+                    Button("Kayıtları onayla") { Task { await store.accept(event) } }.buttonStyle(.glassProminent).tint(.white).foregroundStyle(.black)
                 }
                 if event.status == .pending {
                     Button(store.processing ? "İşleniyor…" : "Modelle işle") { Task { await store.process(event, connection: connection) } }.disabled(store.processing || !connection.online)

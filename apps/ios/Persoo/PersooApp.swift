@@ -33,7 +33,7 @@ struct PrimaryButton: View {
     var body: some View {
         Button(action: action) {
             HStack { Text(title).fontWeight(.semibold); Spacer(); Image(systemName: "arrow.right") }
-                .padding(.horizontal, 18).frame(minHeight: 52).frame(maxWidth: .infinity)
+                .foregroundStyle(.black).padding(.horizontal, 18).frame(minHeight: 52).frame(maxWidth: .infinity)
         }.buttonStyle(.glassProminent).tint(.white).disabled(disabled)
     }
 }
