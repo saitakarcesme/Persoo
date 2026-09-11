@@ -17,6 +17,8 @@
 		755D5D0732463F90CEBEF2FA /* PersooActivity.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = D69FCE6BDED33AD28AA6D67C /* PersooActivity.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		9B146D3676BF708B75B87750 /* PersooActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A7CB143C9BC0D11A8BBA79 /* PersooActivity.swift */; };
 		BF4C9CBADEC0CD5B88EC6F68 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CAEB95C9A80E6444EF0FB3A /* MainView.swift */; };
+		C3886AE758F29947E6BABAE8 /* DesignSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E88B28AE9C66A530968444 /* DesignSystem.swift */; };
+		D7CACD600E2E60691FA920FA /* LifeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DD56933FE77CEAAB3F2BEC /* LifeView.swift */; };
 		D8D1590CE386CBB2B75678B3 /* Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2BB0163A60FEED13CAC283A /* Connection.swift */; };
 /* End PBXBuildFile section */
 
@@ -48,9 +50,11 @@
 		19A7CB143C9BC0D11A8BBA79 /* PersooActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersooActivity.swift; sourceTree = "<group>"; };
 		3B60F017EAB9A03ED412A5DF /* AppStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStore.swift; sourceTree = "<group>"; };
 		50017FB1A51B2AFD3110FBB2 /* Persoo.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = Persoo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		65E88B28AE9C66A530968444 /* DesignSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignSystem.swift; sourceTree = "<group>"; };
 		69C6D7605C8424BF2AF68261 /* PersooCore */ = {isa = PBXFileReference; lastKnownFileType = folder; name = PersooCore; path = ../../packages/PersooCore; sourceTree = SOURCE_ROOT; };
 		6CAEB95C9A80E6444EF0FB3A /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		7899EB17EFE790816E415444 /* RecordingAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingAttributes.swift; sourceTree = "<group>"; };
+		87DD56933FE77CEAAB3F2BEC /* LifeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifeView.swift; sourceTree = "<group>"; };
 		B2C5911665B6EE0CF1B2AB3A /* SpeechCapture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechCapture.swift; sourceTree = "<group>"; };
 		C2BB0163A60FEED13CAC283A /* Connection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Connection.swift; sourceTree = "<group>"; };
 		D69FCE6BDED33AD28AA6D67C /* PersooActivity.appex */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "wrapper.app-extension"; path = PersooActivity.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -76,6 +80,8 @@
 				3B60F017EAB9A03ED412A5DF /* AppStore.swift */,
 				EE62AB6DF82936CDD4968B8F /* CaptureIntent.swift */,
 				C2BB0163A60FEED13CAC283A /* Connection.swift */,
+				65E88B28AE9C66A530968444 /* DesignSystem.swift */,
+				87DD56933FE77CEAAB3F2BEC /* LifeView.swift */,
 				6CAEB95C9A80E6444EF0FB3A /* MainView.swift */,
 				E0C7725E2513C5B42B06421A /* PersooApp.swift */,
 				B2C5911665B6EE0CF1B2AB3A /* SpeechCapture.swift */,
@@ -227,6 +233,8 @@
 				1979372F3E3265741FD0046E /* AppStore.swift in Sources */,
 				4F4FB56F0C8911775233D346 /* CaptureIntent.swift in Sources */,
 				D8D1590CE386CBB2B75678B3 /* Connection.swift in Sources */,
+				C3886AE758F29947E6BABAE8 /* DesignSystem.swift in Sources */,
+				D7CACD600E2E60691FA920FA /* LifeView.swift in Sources */,
 				BF4C9CBADEC0CD5B88EC6F68 /* MainView.swift in Sources */,
 				24FFF5D938C983BBF57FEEAD /* PersooApp.swift in Sources */,
 				56FE0B8CB3FD8CB8046A8E79 /* RecordingAttributes.swift in Sources */,
